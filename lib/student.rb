@@ -93,7 +93,7 @@ class Student
       SELECT COUNT(*)
       FROM students
       WHERE grade = 10
-      LIMIT X
+      LIMIT ?
     SQL
 
     DB[:conn].execute(sql).collect do |row|
