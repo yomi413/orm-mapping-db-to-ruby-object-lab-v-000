@@ -68,10 +68,10 @@ class Student
     sql = <<-SQL
       SELECT *
       FROM students
-      WHERE grade = 9
+      WHERE grade = '9th'
     SQL
 
-    DB[:conn].execute(sql, name)
+    DB[:conn].execute(sql, grade)
 
   end
 end
