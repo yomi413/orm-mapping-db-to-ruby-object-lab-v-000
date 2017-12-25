@@ -80,7 +80,7 @@ class Student
     sql = <<-SQL
       SELECT COUNT(*)
       FROM students
-      WHERE grade > 12
+      WHERE grade < 12
     SQL
 
     DB[:conn].execute(sql).collect do |row|
