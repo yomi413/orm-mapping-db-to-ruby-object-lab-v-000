@@ -28,14 +28,14 @@ class Student
     # return a new instance of the Student class
     sql = <<-SQL
       SELECT *
-      FROM students 
+      FROM students
       WHERE name = ?
       -- LIMIT 1
     SQL
 
     DB[:conn].execute(sql, name).collect do |row|
       self.new_from_db(row)
-    end.first
+    end
   end
 
   def save
