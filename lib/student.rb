@@ -18,6 +18,15 @@ class Student
     DB[:conn].execute(sql)
   end
 
+  def save
+    sql = <<-SQL
+      INSERT INTO students (name, grade)
+      VALUES (?, ?)
+    SQL
+
+    DB[:conn].execute(sql, self.name, self.grade)
+  end
+
   def self.new_from_db(row)
     new_student = self.new
     new_student.id = row[0]
@@ -50,18 +59,11 @@ class Student
     end.first
   end
 
-  def save
-    sql = <<-SQL
-      INSERT INTO students (name, grade)
-      VALUES (?, ?)
-    SQL
-
-    DB[:conn].execute(sql, self.name, self.grade)
-  end
 
 
 
-  
+
+
 
   def self.count_all_students_in_grade_9
     sql = <<-SQL
